@@ -5,8 +5,6 @@ This document will contain the business insights for each SQL query.
 ## Query 1
 Coming Soon
 
-## Query 2
-
 ## Q2 – Monthly Signup Cohort Retention
 
 ### Business Objective
@@ -37,8 +35,37 @@ Measure how effectively newly acquired customers return and place orders in the 
 - CROSS JOIN
 - NULLIF
 
-## Query 3
-Coming Soon
+## Q3 – Funnel Conversion by Acquisition Channel
+
+### Business Objective
+
+Evaluate how effectively each acquisition channel moves users through the purchase funnel and identify where users drop off.
+
+### Business Rules
+
+- Funnel analysis includes only sessions from **19-Apr-2026 onwards**, because event tracking was introduced on that date.
+- Acquisition channel is taken from the `session_channels` view (first-touch attribution).
+- Sessions without an attributed channel are classified as **direct**.
+- Funnel stages are calculated using distinct session counts to avoid counting multiple events within the same session.
+
+### Key Findings
+
+- Organic is the largest acquisition channel, followed by Paid.
+- Across all major channels, approximately **40–41%** of sessions that viewed a product progressed to adding an item to the cart.
+- Around **81%** of users who added items to the cart proceeded to checkout.
+- Checkout completion is strong, with approximately **85–87%** of checkout sessions resulting in a purchase.
+- Overall session-to-purchase conversion is approximately **28–29%** across most acquisition channels.
+- Sessions before **19-Apr-2026** were excluded because event tracking had not yet been implemented. Missing events before that date should not be interpreted as zero conversion.
+
+### SQL Techniques Used
+
+- CTEs
+- LEFT JOIN
+- COALESCE
+- COUNT(DISTINCT)
+- FILTER clause
+- NULLIF
+- Aggregate functions
 
 ## Query 4
 Coming Soon
